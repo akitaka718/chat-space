@@ -39,8 +39,8 @@ Things you may want to cover:
 |name|string|null: false|
 ## Association
 - has many :messages
-- has many members
-- has many users,through: :members
+- has many :members
+- has many :users,through: :members
 
 ## membersテーブル   
 |Column|Type|Options|
