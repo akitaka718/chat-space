@@ -26,9 +26,7 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false, unique: true, index: true|
-|emale|string|null: false, unique: true|
-|password|string|null: false|
+|nickname|string|null: false, unique: true,　index: true|
 ## Association
 - has many :messages
 - has_many :members
