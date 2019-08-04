@@ -26,7 +26,7 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false, unique: true|
+|nickname|string|null: false, unique: true, index: true|
 |emale|string|null: false, unique: true|
 |password|string|null: false|
 ## Association
