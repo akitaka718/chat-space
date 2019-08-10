@@ -6,21 +6,20 @@
     height:100px;
     .header-box {
       float:left;
-      .header-box__name{
+      &__name{
         font-size: 20px;
         color: #333333;
         margin-top:35px;
       }  
-      .header-box__member{
+      &__member{
         font-size: 12px;
         color: #999999;
         display: flex;
         margin-top: 15px;
-        .menber-name {
+        &__menber-name {
           padding-left: 5px;
         }
-      }
-        
+      }  
     }
     .header-edit{
       float: right;
@@ -40,15 +39,15 @@
     height: calc(100vh - 100px - 100px);
     .message{
       .message-box{
-        .message__user{
+        .message-user{
           display: flex;
           font-size: 16px;
-          color: #434a54;
-        }  
-        .message__user__date{
-          font-size: 12px;
-          color: #999999;
-          padding-left: 10px;
+          color: #434a54;  
+          &__date{
+            font-size: 12px;
+            color: #999999;
+            padding-left: 10px;
+          }  
         }
       }
       .message-body{
