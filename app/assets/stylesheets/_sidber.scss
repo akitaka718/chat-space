@@ -1,0 +1,46 @@
+.side-bar {
+  box-sizing: border-box;
+  color: $white-color;
+  width: 300px;
+  .header {
+    background-color: $dark_bule;
+    height: 100px;
+    line-height: 100px;
+    padding: 0 20px;
+    &__name {
+      display: inline-block;
+      font-size: $side_header_font;
+      font-weight: bold;
+    }
+    &__lists {
+      display: inline-block;
+      float: right;
+      .list {
+        display: inline-block;
+      }
+      .icon {
+        color: $white-color;
+        font-size: $side_header_font;
+      }
+    }
+  }
+
+  
+  .side-group{
+    background-color:$dark_bule_gray;
+    padding: 0 20px;
+    height: calc(100vh - 100px); /*100vhの場合,"-"の前後に"必ず半角空白"を入れる事。入れないと反映されない!! ×：100vh-100px ○:100vh - 100px*/
+    /*.side-group__boxで１つのブロックを挾む。１つグループ毎の余白を設定する為*/
+    .side-group__box{
+      box-sizing: border-box;
+      padding: 20px 0 40px 0; /*20px 0 40px(上,左右,下)が多分ベスト なぜか反映されなかったのでとりあえず上,右,下,左の手法で設定*/
+      .side-group__box__name{
+        font-size:$side_group_name;  /* font.scss呼び出し application.scssにscssの呼び出し(@import)設定を忘れない。*/
+      }
+      .side-group__box__message{
+        font-size:$side_group_message;
+        margin-top: 5px;   /*メッセージのブロックとグループ名のブロックで感覚を開けるのでmarginを使用*/
+      }
+    }
+  }
+}
