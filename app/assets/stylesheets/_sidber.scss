@@ -24,22 +24,19 @@
       }
     }
   }
-
-  
   .side-group{
     background-color:$dark_bule_gray;
     padding: 0 20px;
-    height: calc(100vh - 100px); /*100vhの場合,"-"の前後に"必ず半角空白"を入れる事。入れないと反映されない!! ×：100vh-100px ○:100vh - 100px*/
-    /*.side-group__boxで１つのブロックを挾む。１つグループ毎の余白を設定する為*/
-    .side-group__box{
+    height: calc(100vh - 100px); 
+    &__box{
       box-sizing: border-box;
-      padding: 20px 0 40px 0; /*20px 0 40px(上,左右,下)が多分ベスト なぜか反映されなかったのでとりあえず上,右,下,左の手法で設定*/
-      .side-group__box__name{
-        font-size:$side_group_name;  /* font.scss呼び出し application.scssにscssの呼び出し(@import)設定を忘れない。*/
+      padding: 20px 0 40px 0; 
+      &__name{
+        font-size:$side_group_name;
       }
-      .side-group__box__message{
+      &__message{
         font-size:$side_group_message;
-        margin-top: 5px;   /*メッセージのブロックとグループ名のブロックで感覚を開けるのでmarginを使用*/
+        margin-top: 5px;   
       }
     }
   }
