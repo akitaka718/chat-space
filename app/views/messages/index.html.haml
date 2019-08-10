@@ -1,6 +1,6 @@
 .wrapper
 
-  = render 'side/side-ber' #部分テンプレート_side-ber.html.hamlを呼び出し 
+  = render 'side/side-ber' 
 
   .chat-main
     .header
@@ -9,23 +9,20 @@
           グループ名
         .header-box__member
           Member : 
-          .menber-name
+          .header-box__member__menber-name
             メンバー メンバー メンバー
       .header-edit
         .header-edit__button
-          Edit
-                       
+          Edit                   
     .messages
       .message
         .message-box
-          .message__user
+          .message-user
             ユーザー名           
-            .message__user__date
+            .message-user__date
               2019/01/01(sat) 15:00:00
         .message-body
           メッセージ
-
-
     .form 
       %form
         %input.form__message
