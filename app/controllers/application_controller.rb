@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  befor_action: authenticate_user! #ログインしていないユーザーはログイン要求ページに飛ぶ設定
+  before_action: authenticate_user! #ログインしていないユーザーはログイン要求ページに飛ぶ設定
