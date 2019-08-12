@@ -4,5 +4,5 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller? #nicknameのデータを登録できる様にする設定             
 
   def configure_permitted_parameters #ストロングパラメータ
-      devise_parameter_saniizer.permit(:sign_up, key: [:nickname])
+      devise_parameter_sanitizer.permit(:sign_up, key: [:nickname])
   end
