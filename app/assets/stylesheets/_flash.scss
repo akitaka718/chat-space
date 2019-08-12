@@ -1,0 +1,10 @@
+.flash {
+  color: $white_color;
+  text-align: center;
+  &__alert{
+    background-color: $orieng-color;
+  }
+  &__notice {
+    background-color: $bule_color; 
+  }
+}
