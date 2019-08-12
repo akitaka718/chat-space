@@ -6,3 +6,4 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters #ストロングパラメータ
       devise_parameter_sanitizer.permit(:sign_up, key: [:nickname])
   end
+end 
