@@ -1,5 +1,5 @@
 class Group < ApplicationRecord
-  has many :messages
-  has many :members
-  has many :users,through: :members
+  has_many :messages
+  has_many :members
+  has_many :users,through: :members
 end
