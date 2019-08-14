@@ -1,5 +1,5 @@
 .chat-group-form
   %h1 チャットグループ編集
-  render=partial: 'form',locals: {group: @group}
+  =render partial: 'form', locals: {group: @group}
   / partial: '部分テンプレートのディレクトリ',locals: {@を部分テンプレ内で変数groupとして使用する}
   / partial:とlocal:は省略可能
