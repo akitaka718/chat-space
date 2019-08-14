@@ -11,12 +11,10 @@
         = fa_icon 'cog', class: 'icon'
   .side-group
     .side-group__box
-      .side-group__box__name
-        グループ1
-      .side-group__box__message
-        メッセージ
-    .side-group__box    
-      .side-group__box__name
-        グループ2
-      .side-group__box__message
-        メッセージ
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          .side-group__box__name
+            = group.name
+          .side-group__box__message
+            メッセージ無し
+  
