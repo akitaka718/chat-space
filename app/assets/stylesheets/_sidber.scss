@@ -29,10 +29,10 @@
     padding: 0 20px;
     height: calc(100vh - 100px); 
     &__box{
-      box-sizing: border-box;
-      padding: 20px 0 40px 0; 
+      box-sizing: border-box; 
       &__name{
         font-size:$side_group_name;
+        padding-top:20px;
       }
       &__message{
         font-size:$side_group_message;
