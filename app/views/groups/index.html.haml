@@ -1,33 +1,6 @@
 .wrapper
 
-  = render 'side/side-ber' 
+  = render 'side/side-ber'
 
-  .chat-main
-    .header
-      .header-box
-        .header-box__name
-          グループ名
-        .header-box__member
-          Member : 
-          .header-box__member__menber-name
-            メンバー メンバー メンバー
-      .header-edit
-        .header-edit__button
-          Edit                   
-    .messages
-      .message
-        .message-box
-          .message-user
-            ユーザー名           
-            .message-user__date
-              2019/01/01(sat) 15:00:00
-        .message-body
-          メッセージ
-    .form 
-      %form
-        %input.form__message
-        .form__mask
-          %label.form__mask__image
-            = fa_icon 'picture-o', class: 'icon'
-            %input.hidden{type: 'file'}
-        %input.form__submit{type: 'submit', value: 'Send'} 
+  
+  
