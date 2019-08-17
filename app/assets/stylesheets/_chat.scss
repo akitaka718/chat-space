@@ -1,4 +1,4 @@
-.chat-main{
+  .chat-main{
   width: calc(100% - 300px);
   .header {
     box-sizing: border-box;
@@ -35,14 +35,16 @@
     background-color: #fafafa;
     border: 1px solid #eeeeee;
     box-sizing: border-box;
-    padding:46px 40px;
+    padding: 46px 40px;
     height: calc(100vh - 100px - 100px);
     .message{
       .message-box{
+        box-sizing: border-box;
+        padding-bottom: 40px;
         .message-user{
           display: flex;
           font-size: 16px;
-          color: #434a54;  
+          color: #434a54;
           &__date{
             font-size: 12px;
             color: #999999;
