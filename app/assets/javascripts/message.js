@@ -1,20 +1,46 @@
-
-// done：非同期通信がうまく行われた時の処理 fail：うまくいかなかった時の処理
-// jbuilderで返されたデータは'done(function(引数){処理})'の'(引数)'の部分で受け取る。引数の中の変数は任意`
-//$('セレクタ名').apend() 追加したい要素の末尾にHTML要素を追加する。
-//400 Bad Request
-//'turbolinks:load'
-
-
-// //ajax通信エラー
-// error : function(XMLHttpRequest, textStatus, errorThrown) {
-//   console.log("ajax通信に失敗しました");
-//   console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-//   console.log("textStatus     : " + textStatus);
-//   console.log("errorThrown    : " + errorThrown.message);
-// },
-//  //ajax通信成功
-// success : function(response) {
-//   console.log("ajax通信に成功しました");
-//   console.log(response);
-// }
+$(function(){
+  
+  function buildHtml(message){
+    var image = message.image? `<img src=${message.image}>`:"";
+    var html=`<div class="message">
+               <div class="message-box">
+                <div class="message-user">
+                 ${message.name}
+                </div>
+                <div class="message-date">
+                 ${message.created_at}
+                </div>
+               </div>
+               <div class="message-body">
+                ${message.body}
+               </div>
+               ${image}
+              </div>`
+    return html
+  }
+  
+  $('#new_message').on('submit',function(e){
+    e.preventDefault();
+    var formdata = new FormData(this);
+    var ul = $(this).attr('ation');
+    $.ajax({
+      type: 'POST',
+      url: ul,
+      data: formdata,
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(data){
+      html = buildHtml(data);
+      $('.messages').append(html);
+      $('.form__submit').prop("disabled",false);
+      $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
+      $('#new_message')[0].reset();
+    })
+    .fail(function(){
+      alert('メッセージが送信できません');
+      $('.form__submit').prop("disabled",false);
+    })
+  })
+});
