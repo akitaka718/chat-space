@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-     @users=@user.where("nickname LINK?","%#{params[:keyword]}%")
+     @users=User.where("nickname LINK?","%#{params[:keyword]}%")
      respond_to do |format| 
        format.html
        format.json
