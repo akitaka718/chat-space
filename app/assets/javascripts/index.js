@@ -21,7 +21,7 @@ $(function(){
       $('#user-search-result').append(html);
     })
     .fail(function(){
-    
+     alert('エラーが発生しました');
     })
   })
 });
