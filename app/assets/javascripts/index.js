@@ -1,5 +1,5 @@
 $(function(){
-  function biuldHtml(index){
+  function biuldHtml(user){
     var html=`
     <div class="chat-group-user clearfix">
       <p class="chat-group-user__name">${user.name}</p>
