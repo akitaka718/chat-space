@@ -1,19 +1,17 @@
 $(function(){
-  console.log('test');
-  $("#user-search-field").on('keyup',function(e){
-    e.preventDefault();
-    var input=$("#user-search-field").val();
-
-    console.log(input); //入力された値がinputに入っているか検証 レビュー提出前に消す
+  $('#user-search-field').on('keyup',function(){
+    var input=$('#user-search-field').val();
     $.ajax({
       type: 'GET',
       url: '/users',
-      data: input,
-      dataType: 'json',
-      contentType: true,
-      processData: true
+      data: {keyword: input},
+      dataType: 'json'
     })
-    
+    .done(function(data){
+      console.log('成功');
+    })
+    .fail(function(){
+      alert('失敗');
+    })
   })
-
 });

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-     @users=User.where("nickname LINK?","%#{params[:keyword]}%")
+     @users=User.where('nickname LINK(?)',"%#{params[:keyword]}%")
      respond_to do |format| 
        format.html
        format.json
@@ -18,9 +18,8 @@ class UsersController < ApplicationController
     end
   end
   
-  
   private
-  
+
   def user_params
       params.require(:user).permit(:nickname,:email)
   end    
