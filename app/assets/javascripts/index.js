@@ -3,7 +3,16 @@ $(function(){
   $("#user-search-field").on('keyup',function(e){
     e.preventDefault();
     var input=$("#user-search-field").val();
-    // console.log(input); 入力された値がinputに入っているか検証　レビュー提出前に消す
+
+    console.log(input); //入力された値がinputに入っているか検証 レビュー提出前に消す
+    $.ajax({
+      type: 'GET',
+      url: '/users',
+      data: input,
+      dataType: 'json',
+      contentType: true,
+      processData: true
+    })
     
   })
 
