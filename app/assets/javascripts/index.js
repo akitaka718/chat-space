@@ -54,10 +54,10 @@ $(function(){
   })
    
   $(document).on('click','.user-search-add.chat-group-user__btn.chat-group-user__btn--add',function(){
-    var userName=$(this).attr('data-user-name');//data-user-name属性の属性値を取得
-    var userId=$(this).attr('data-user-id');//data-user-id属性の属性値を取得
+    var userName=$(this).attr('data-user-name');
+    var userId=$(this).attr('data-user-id');
     addBtnClick(userName,userId)
-    $(this).parent().remove();//$(document).on()で指定した要素(親要素を含めて)を削除  
+    $(this).parent().remove();  
   })
 
   $(document).on('click','.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn',function(){
