@@ -54,8 +54,8 @@ $(function(){
   })
    
   $(document).on('click','.user-search-add.chat-group-user__btn.chat-group-user__btn--add',function(){
-    var userName=$(this).attr('data-user-name');
-    var userId=$(this).attr('data-user-id');
+    var userName=$(this).data('user-name'); 
+    var userId=$(this).data('user-id');
     addBtnClick(userName,userId)
     $(this).parent().remove();  
   })
