@@ -17,7 +17,7 @@
             Edit           
     .messages
       -@messages.each do |message|
-        .message       
+        .message{data: {message_id: message.id}}      
           .message-box 
             .message-user
               = message.user.nickname
