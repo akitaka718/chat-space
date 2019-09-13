@@ -37,7 +37,6 @@ $(function(){
     })
     .done(function(datas){
       $('#user-search-result').empty();
-      console.log(input);
       if (datas.length!==0){
         datas.forEach(function(data){
           html=biuldHtml(data)
