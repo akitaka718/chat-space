@@ -5,4 +5,4 @@ json.array! @messages do |message|
   json.id message.id 
   json.nickname message.user.nickname
 end
-#更新される間に複数メッセージが投稿される可能性があるので、配列で繰り返して複数データを取得できる様に設定
+#更新される間に複数メッセージが投稿される可能性があるのので、配列で設定して値を表示させる
