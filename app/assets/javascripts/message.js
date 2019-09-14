@@ -47,6 +47,7 @@ $(function(){
   
   //---自動更新---
   var buildMessageHTML = function(message) {
+    if (message.body || message.img.url) {
       var html=`
       <div class = "message" data-message_id = '${message.id}'>
         <div class ="message-box">
@@ -59,22 +60,38 @@ $(function(){
         </div>   
         <div class="message-body">
           ${message.body}
-        </div> 
-      </div>`      
-      return html
+        </div>
+        ${image} 
+      </div>`
+    }      
+    return html
   };
   
   var reloadMessages = function() {
     //カスタムデータ属性を利用して、ブラウザに表示されている最新メッセージのidを取得
     last_message_id = $('.message:last').data('message-id');
     $.ajax({
-      url: './messages',
+      url: './api/messages',
       //ターミナルでroutesのVerb項目を確認。 api/messages#indexはGETとなっているのでGETを設定
       type: 'GET',
       //最新のメッセージを値にしてリクエストする {任意の名前: 変数}
       data: {id: last_message_id},
       //データ要求方式
-      dataType: 'json'
+      dataType: 'json',
+      //ajax通信エラー
+      
+      error : function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("ajax通信に失敗しました");
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+      },
+      //ajax通信成功
+      success : function(response) {
+        console.log("ajax通信に成功しました");
+        console.log(response);
+      }   
+
     })
 
     .done(function(messages){
@@ -89,5 +106,5 @@ $(function(){
       console.log('自動更新に失敗しました');
     })
   }
-  setInterval(reloadMessages,5000); //一定時間経過する毎に処理を実行する関数 第一引数:動かしたい関数 第二引数:動かす時間間隔(ミリ秒単位) 
+  setInterval(reloadMessages,5000); //一定時間経過する毎に処理を実行する関数 第一引数:動かしたい関数(動かしたい関数を代入した変数) 第二引数:動かす時間間隔(ミリ秒単位) 
 });
