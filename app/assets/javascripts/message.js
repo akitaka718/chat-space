@@ -59,21 +59,7 @@ $(function(){
       //最新のメッセージを値にしてリクエストする {任意の名前: 変数}
       data: {id: last_message_id},
       //データ要求方式
-      dataType: 'json',
-      //ajax通信エラー
-      
-      error : function(jqXHR, textStatus, errorThrown) {
-        console.log("ajax通信に失敗しました");
-        console.log("XMLHttpRequest : " + jqXHR.status);
-        console.log("textStatus : " + textStatus);
-        console.log("errorThrown : " + errorThrown);
-      },
-      //ajax通信成功
-      success : function(response) {
-        console.log("ajax通信に成功しました");
-        console.log(response);
-      }   
-
+      dataType: 'json'
     })
 
     .done(function(messages){
