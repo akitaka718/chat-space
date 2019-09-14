@@ -1,4 +1,5 @@
 $(function(){
+  //---非同期通信---
   //テンプレートリテラル記法でHTML作成 
   function buildHtml(message){
     var image = message.image? `<img src=${message.image}>`:"";
@@ -19,7 +20,6 @@ $(function(){
     return html
   }
   
-  //非同期通信
   $('#new_message').on('submit',function(e){
     e.preventDefault();
     var formdata = new FormData(this);
@@ -45,25 +45,49 @@ $(function(){
     })
   })
   
-  //自動更新
+  //---自動更新---
+  var buildMessageHTML = function(message) {
+      var html=`
+      <div class = "message" data-message_id = '${message.id}'>
+        <div class ="message-box">
+           <div class="message-user">
+             ${message.nickname}
+           </div>
+           <div class="message-date">
+             ${message.created-at}
+           </div>
+        </div>   
+        <div class="message-body">
+          ${message.body}
+        </div> 
+      </div>`      
+      return html
+  };
+  
   var reloadMessages = function() {
     //カスタムデータ属性を利用して、ブラウザに表示されている最新メッセージのidを取得
     last_message_id = $('.message:last').data('message-id');
     $.ajax({
-      url: '/api/messages',
+      url: './messages',
       //ターミナルでroutesのVerb項目を確認。 api/messages#indexはGETとなっているのでGETを設定
       type: 'GET',
-      //最新のメッセージを値にしてリクエストする
+      //最新のメッセージを値にしてリクエストする {任意の名前: 変数}
       data: {id: last_message_id},
       //データ要求方式
       dataType: 'json'
     })
 
     .done(function(messages){
-      console.log(messages);
+      messages.foreach(function(message){
+        //メッセージが入ったHTMLを取得
+        var insertHtml=buildMessageHTML(message);
+        //取得したHTMLを表示
+        $('.messages').appenßd(insertHtml);
+      });
     })
     .fail(function(){
       console.log('自動更新に失敗しました');
     })
   }
+  setInterval(reloadMessages,5000); //一定時間経過する毎に処理を実行する関数 第一引数:動かしたい関数 第二引数:動かす時間間隔(ミリ秒単位) 
 });
