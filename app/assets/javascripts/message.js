@@ -3,7 +3,7 @@ $(function(){
   //テンプレートリテラル記法でHTML作成 
   function buildHtml(message){
     var image = message.image? `<img src=${message.image}>`:"";
-    var html=`<div class="message">
+    var html=`<div class="message" data-message-id='${message.id}'>
                <div class="message-box">
                 <div class="message-user">
                  ${message.name}
@@ -46,27 +46,7 @@ $(function(){
   })
   
   //---自動更新---
-  var buildMessageHTML = function(message) {
-    if (message.body || message.img.url) {
-      var html=`
-      <div class = "message" data-message_id = '${message.id}'>
-        <div class ="message-box">
-           <div class="message-user">
-             ${message.nickname}
-           </div>
-           <div class="message-date">
-             ${message.created-at}
-           </div>
-        </div>   
-        <div class="message-body">
-          ${message.body}
-        </div>
-        ${image} 
-      </div>`
-    }      
-    return html
-  };
-  
+
   var reloadMessages = function() {
     //カスタムデータ属性を利用して、ブラウザに表示されている最新メッセージのidを取得
     last_message_id = $('.message:last').data('message-id');
@@ -95,12 +75,14 @@ $(function(){
     })
 
     .done(function(messages){
-      messages.foreach(function(message){
+      var insertHtml ="";
+      messages.forEach(function(message){
         //メッセージが入ったHTMLを取得
-        insertHtml = buildMessageHTML(message);
+        insertHtml = buildHtml(message);
         //取得したHTMLを表示
         $('.messages').append(insertHtml);
       });
+  
     })
     .fail(function(){
       console.log('自動更新に失敗しました');
