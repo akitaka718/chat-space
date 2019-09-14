@@ -71,20 +71,20 @@ $(function(){
     //カスタムデータ属性を利用して、ブラウザに表示されている最新メッセージのidを取得
     last_message_id = $('.message:last').data('message-id');
     $.ajax({
-      url: './api/messages',
       //ターミナルでroutesのVerb項目を確認。 api/messages#indexはGETとなっているのでGETを設定
       type: 'GET',
+      url: "api/messages",
       //最新のメッセージを値にしてリクエストする {任意の名前: 変数}
       data: {id: last_message_id},
       //データ要求方式
       dataType: 'json',
       //ajax通信エラー
       
-      error : function(XMLHttpRequest, textStatus, errorThrown) {
+      error : function(jqXHR, textStatus, errorThrown) {
         console.log("ajax通信に失敗しました");
-        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-        console.log("textStatus     : " + textStatus);
-        console.log("errorThrown    : " + errorThrown.message);
+        console.log("XMLHttpRequest : " + jqXHR.status);
+        console.log("textStatus : " + textStatus);
+        console.log("errorThrown : " + errorThrown);
       },
       //ajax通信成功
       success : function(response) {
@@ -97,9 +97,9 @@ $(function(){
     .done(function(messages){
       messages.foreach(function(message){
         //メッセージが入ったHTMLを取得
-        var insertHtml=buildMessageHTML(message);
+        insertHtml = buildMessageHTML(message);
         //取得したHTMLを表示
-        $('.messages').appenßd(insertHtml);
+        $('.messages').append(insertHtml);
       });
     })
     .fail(function(){
