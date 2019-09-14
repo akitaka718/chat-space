@@ -1,5 +1,5 @@
 $(function(){
-  //---非同期通信---
+
   //テンプレートリテラル記法でHTML作成 
   function buildHtml(message){
     var image = message.image? `<img src=${message.image}>`:"";
@@ -21,6 +21,7 @@ $(function(){
     return html
   }
   
+  //---非同期通信---
   $('#new_message').on('submit',function(e){
     e.preventDefault();
     var formdata = new FormData(this);
@@ -73,7 +74,7 @@ $(function(){
       $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
     })
     .fail(function(){
-      console.log('自動更新に失敗しました');
+      alert('自動更新に失敗しました');
     })
   }
   setInterval(reloadMessages,5000); //一定時間経過する毎に処理を実行する関数 第一引数:動かしたい関数(動かしたい関数を代入した変数) 第二引数:動かす時間間隔(ミリ秒単位) 
