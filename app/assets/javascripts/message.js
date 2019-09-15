@@ -49,32 +49,37 @@ $(function(){
   
   //---自動更新---
   var reloadMessages = function() {
-    //カスタムデータ属性を利用して、ブラウザに表示されている最新メッセージのidを取得
-    last_message_id = $('.message:last').data('message-id');
-    console.log(last_message_id);
-    $.ajax({
-      //ターミナルでroutesのVerb項目を確認。 api/messages#indexはGETとなっているのでGETを設定
-      type: 'GET',
-      url: "api/messages",
-      //最新のメッセージを値にしてリクエストする {任意の名前: 変数}
-      data: {id: last_message_id},
-      //データ要求方式
-      dataType: 'json'
-    })
+    var url=$('#new_message').attr('action');
+    if (url) {
+      //カスタムデータ属性を利用して、ブラウザに表示されている最新メッセージのidを取得
+      last_message_id = $('.message:last').data('message-id');
+      console.log(last_message_id);
+      $.ajax({
+        //ターミナルでroutesのVerb項目を確認。 api/messages#indexはGETとなっているのでGETを設定
+        type: 'GET',
+        url: "api/messages",
+        //最新のメッセージを値にしてリクエストする {任意の名前: 変数}
+        data: {id: last_message_id},
+        //データ要求方式
+        dataType: 'json'
+      })
 
-    .done(function(messages){
-      var insertHtml ="";
-      messages.forEach(function(message){
-        //メッセージが入ったHTMLを取得
-        insertHtml = buildHtml(message);
-        //取得したHTMLを表示
-        $('.messages').append(insertHtml);
-      });
-      $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
-    })
-    .fail(function(){
-      alert('自動更新に失敗しました');
-    })
-  }
-  setInterval(reloadMessages,5000); //一定時間経過する毎に処理を実行する関数 第一引数:動かしたい関数(動かしたい関数を代入した変数) 第二引数:動かす時間間隔(ミリ秒単位) 
+      .done(function(messages){
+        var insertHtml ="";
+        messages.forEach(function(message){
+          //メッセージが入ったHTMLを取得
+          insertHtml = buildHtml(message);
+          //取得したHTMLを表示
+          $('.messages').append(insertHtml);
+        });
+        $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
+      })
+      .fail(function(){
+        alert('自動更新に失敗しました');
+      })
+    }
+  }  
+  //一定時間経過する毎に処理を実行する関数 第一引数:動かしたい関数(動かしたい関数を代入した変数) 第二引数:動かす時間間隔(ミリ秒単位)
+  setInterval(reloadMessages,5000);
+
 });
