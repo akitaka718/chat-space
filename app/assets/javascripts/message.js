@@ -1,5 +1,4 @@
 $(function(){
-
   //テンプレートリテラル記法でHTML作成 
   function buildHtml(message){
     var image = message.image? `<img src=${message.image}>`:"";
@@ -20,7 +19,6 @@ $(function(){
     </div>`
     return html
   }
-  
   //---非同期通信---
   $('#new_message').on('submit',function(e){
     e.preventDefault();
@@ -46,7 +44,6 @@ $(function(){
       $('.form__submit').prop("disabled",false);
     })
   })
-  
   //---自動更新---
   var reloadMessages = function() {
     var url=$('#new_message').attr('action');
@@ -62,7 +59,6 @@ $(function(){
         //データ要求方式
         dataType: 'json'
       })
-
       .done(function(messages){
         var insertHtml ="";
         messages.forEach(function(message){
@@ -80,5 +76,4 @@ $(function(){
   }  
   //一定時間経過する毎に処理を実行する関数 第一引数:動かしたい関数(動かしたい関数を代入した変数) 第二引数:動かす時間間隔(ミリ秒単位)
   setInterval(reloadMessages,5000);
-
 });
