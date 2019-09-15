@@ -53,7 +53,6 @@ $(function(){
     if (url) {
       //カスタムデータ属性を利用して、ブラウザに表示されている最新メッセージのidを取得
       last_message_id = $('.message:last').data('message-id');
-      console.log(last_message_id);
       $.ajax({
         //ターミナルでroutesのVerb項目を確認。 api/messages#indexはGETとなっているのでGETを設定
         type: 'GET',
