@@ -10,7 +10,8 @@
         .header-box__member
           Member : 
           .header-box__member__menber-name
-            メンバー メンバー メンバー
+            -@group.users.each do |group|
+              =group.nickname
       .header-edit
         .header-edit__button
           =link_to edit_group_path(@group) do
