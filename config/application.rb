@@ -19,6 +19,7 @@ module ChatSpace
     end
 
     config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'#時間表示を日本時間に変更する
     
   end
 end

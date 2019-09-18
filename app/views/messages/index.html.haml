@@ -23,10 +23,10 @@
             .message-user
               = message.user.nickname
             .message-date
-              = message.created_at
+              = l message.created_at, format: :orgtime
           .message-body
             - if message.body.present?
-              =message.body
+              = message.body
             = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
     .form 
       = form_for [@group,@message] do |f|
