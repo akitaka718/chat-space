@@ -23,13 +23,19 @@
     }
     .header-edit{
       float: right;
-      margin-top:28px;
+      text-decoration: none;
+      margin-top:30px;
       border: 1px solid $bule-color;
       height: 40px;
       line-height: 40px; 
       padding: 0 20px;
       color: $bule-color;
+      .header-edit__button a{
+        text-decoration: none;
+        color: $bule-color;
+      }
     }
+
   }
   .messages{
     background-color: #fafafa;
