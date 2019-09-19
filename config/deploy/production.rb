@@ -61,4 +61,4 @@
 #   }
 
 #デプロイする環境別の設定を記述 Elastic IP AWSログインユーザー サーバーロール SSHの設定 その他サーバーに紐づく任意の設定
-server '3.113.89.114', user 'ec2-user', roles: %w{app db web}
+server '3.113.89.114', user: 'ec2-user', roles: %w{app db web}
