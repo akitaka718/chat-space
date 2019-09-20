@@ -66,6 +66,9 @@ set :unicorn_config_path, -> {"#{current_path}/config/unicorn.rb"}
 #アプリケーションの過去のバージョンを5つまで保存する設定
 set :keep_releases, 5
 
+# secrets.yml用のシンボリックリンクを追加
+set :lenked_files, %w{ config/secrets.yml }
+
 #デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
